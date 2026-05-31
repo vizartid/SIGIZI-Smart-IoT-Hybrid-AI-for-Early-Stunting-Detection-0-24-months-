@@ -1,0 +1,23 @@
+FOLDER: backend/node-whatsapp
+
+ISI FOLDER:
+- index.js              # Entry point Node.js, listen ke Firebase Realtime Database trigger
+- whatsapp_client.js    # Mengirim pesan via WhatsApp API (Baileys / whatsapp-web.js)
+- pdf_generator.js      # Generate PDF laporan (menggunakan pdfkit atau puppeteer)
+- package.json          # Dependencies: whatsapp-web.js, firebase-admin, pdfkit, dll
+
+FUNGSI:
+- Memantau Firebase Realtime Database untuk data balita dengan Z-score < -2 SD.
+- Mengirim notifikasi WhatsApp ke orang tua (berisi rekomendasi intervensi dari AI Generatif).
+- Membuat laporan PDF (riwayat pengukuran) dan mengirimkannya melalui WhatsApp atau menyimpan ke cloud.
+
+KONEKSI DENGAN FOLDER LAIN:
+- `frontend/dashboard` : tidak langsung, tetapi dashboard juga menggunakan Firebase yang sama.
+- `backend/fastapi` : tidak langsung, karena notifikasi dipicu oleh perubahan di Firebase (bukan dari FastAPI langsung).
+- `model/` : tidak diperlukan, karena AI Generatif (Ollama) dijalankan terpisah.
+
+CARA MENJALANKAN:
+cd backend/node-whatsapp
+npm install
+node index.js
+Catatan: Butuh koneksi internet dan autentikasi WhatsApp (scan QR).

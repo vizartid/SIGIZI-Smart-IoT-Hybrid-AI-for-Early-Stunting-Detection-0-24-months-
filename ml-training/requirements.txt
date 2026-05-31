@@ -1,0 +1,21 @@
+FOLDER: ml-training
+
+ISI FOLDER:
+- dataset_generation.ipynb      # Notebook untuk memuat dan memvalidasi dataset, serta fungsi generate data sintetis
+- random_forest_training.ipynb  # Notebook untuk melatih model Random Forest, evaluasi, dan export model
+- simulated_data.csv            # (Opsional) dataset sintetis yang dihasilkan
+- requirements.txt              # Daftar library untuk Jupyter (pandas, numpy, scikit-learn, matplotlib, seaborn, joblib)
+
+FUNGSI:
+- Menyediakan lingkungan untuk melatih model klasifikasi stunting.
+- Mengekspor model dalam format .pkl dan label encoder ke folder `model/`.
+- Menganalisis feature importance dan akurasi model.
+
+KONEKSI DENGAN FOLDER LAIN:
+- `model/` : hasil training (random_forest_stunting.pkl, gender_encoder.pkl) disimpan ke folder model.
+- `backend/flask-ml` : model yang sudah dilatih digunakan oleh flask-ml untuk inferensi.
+
+CARA MENGGUNAKAN:
+- Buka Jupyter Notebook atau VSCode.
+- Jalankan `random_forest_training.ipynb` secara berurutan.
+- Pastikan file `stunting_dataset.csv` berada di root proyek (atau sesuaikan path).

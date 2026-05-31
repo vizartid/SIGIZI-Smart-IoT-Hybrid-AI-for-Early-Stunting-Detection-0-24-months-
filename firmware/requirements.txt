@@ -1,0 +1,24 @@
+FOLDER: firmware/esp32
+
+ISI FOLDER:
+- sigizi_firmware.ino   # Kode utama Arduino untuk ESP32
+- config.h              # Konfigurasi pin, WiFi, server, parameter pengukuran
+
+FUNGSI:
+- Menginisialisasi sensor ToF VL53L1X (2 buah), load cell HX711, RFID RC522, LCD 20x4, MicroSD.
+- Membaca RFID untuk identifikasi balita.
+- Mengukur berat dan panjang badan secara simultan dengan moving average filter.
+- Menampilkan hasil di LCD.
+- Mengirim data ke server (FastAPI) via MQTT atau WebSocket.
+- Jika tidak ada koneksi, menyimpan data ke MicroSD (offline) dan melakukan sinkronisasi otomatis saat koneksi pulih.
+
+KONEKSI DENGAN FOLDER LAIN:
+- `backend/fastapi` : mengirim data ke endpoint FastAPI.
+- `backend/flask-ml` : tidak langsung, data diproses oleh FastAPI yang memanggil flask-ml.
+- `docs/` : menggunakan gambar skema dan 3D sebagai referensi perakitan.
+
+CARA UPLOAD:
+- Buka Arduino IDE, install library yang diperlukan (VL53L1X, MFRC522, HX711, LiquidCrystal_I2C, PubSubClient, ArduinoJson).
+- Pilih board ESP32 Dev Module.
+- Sesuaikan SSID dan password di config.h.
+- Upload ke ESP32.

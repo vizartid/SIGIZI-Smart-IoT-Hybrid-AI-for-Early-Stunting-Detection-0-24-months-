@@ -1,0 +1,22 @@
+FOLDER: backend/flask-ml
+
+ISI FOLDER:
+- app.py                # Aplikasi Flask, endpoint /predict
+- inference.py          # Fungsi loading model dan prediksi
+- model.pkl             # Model Random Forest (akan di-load dari folder ../model)
+- gender_encoder.pkl    # Label encoder untuk jenis kelamin
+- requirements.txt      # flask, scikit-learn, joblib, pandas, numpy
+
+FUNGSI:
+- Menerima request POST dari FastAPI berisi data: umur, jenis_kelamin, berat, panjang.
+- Mengembalikan JSON: { "zscore_bb": ..., "zscore_tb": ..., "status_stunting": "Normal/Stunting/Severe Stunting" }
+
+KONEKSI DENGAN FOLDER LAIN:
+- `backend/fastapi` : menerima panggilan internal dari FastAPI.
+- `model/` : membaca file random_forest_stunting.pkl dan gender_encoder.pkl (sebaiknya disimpan di folder model/ lalu di-symlink atau disalin).
+- `ml-training` : model dilatih di folder ml-training, hasilnya diekspor ke folder model/.
+
+CARA MENJALANKAN:
+cd backend/flask-ml
+pip install -r requirements.txt
+python app.py  # biasanya berjalan di port 5001

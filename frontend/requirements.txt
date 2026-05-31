@@ -1,0 +1,24 @@
+FOLDER: frontend/dashboard
+
+ISI FOLDER:
+- src/                  # Kode sumber React.js (components, pages, hooks)
+- public/               # Aset statis (index.html, favicon, dll)
+- package.json          # Daftar dependencies React, Firebase SDK, Chart.js, dll
+- .env                  # Konfigurasi Firebase API key (opsional)
+
+FUNGSI:
+- Menampilkan dashboard monitoring real-time: daftar balita, grafik pertumbuhan WHO, status gizi, riwayat pengukuran.
+- Menyediakan menu analitik (distribusi stunting berdasarkan usia/jenis kelamin).
+- Autentikasi role-based (kader, tenaga kesehatan, orang tua).
+
+KONEKSI DENGAN FOLDER LAIN:
+- Membaca data dari Firebase Firestore (dikirim oleh FastAPI).
+- Menampilkan data yang sudah diproses (tidak langsung terhubung ke backend lainnya).
+- Tidak memerlukan folder `model/` atau `firmware`.
+
+CARA MENJALANKAN (development):
+cd frontend/dashboard
+npm install
+npm start  # berjalan di http://localhost:3000
+
+Untuk production: npm run build, lalu deploy ke hosting statis.
